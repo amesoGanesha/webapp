@@ -1,0 +1,89 @@
+.login {
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Added */
+}
+.img-1 {
+    height: 132px;
+    width: 567px;
+}
+.login-content {
+    text-align: center;
+    font-family: "lexend deca";
+}
+.login-content input {
+    background-color: #224957;
+    border: none;
+    margin-block: 10px;
+    padding-block: 5px;
+    border-radius: 10px;
+    width: 300px;
+    height: 45px;
+}
+.login-content input::placeholder {
+    color: #fff;
+    padding-left: 10px;
+    padding-block: 5px;
+    font-size: 14px;
+}
+.login-content p {
+    font-size: 16px;
+}
+.forgot-pass {
+    width: 300px;
+    display: flex;
+    margin-left: 325px;
+    padding-block: 10px;
+    font-size: 16px;
+}
+.login-btn {
+    background-color: #24B4FB;
+    border: none;
+    border-radius: 10px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    color: black;
+    padding-inline: 128px;
+    padding-block: 10px;
+}
+.img-2 {
+    position: absolute;
+    bottom: 0; /* Changed */
+    width: 100%;
+    height: auto; /* Changed */
+}
+.login-main {
+    position: relative;
+    height: 100vh; /* Changed */
+    overflow: hidden; /* Added */
+}
+/* media queries */
+@media (max-width: 620px) {
+    .img-2 {
+        width: 120%;
+        bottom: 0; /* Changed */
+    }
+}
+@media (max-width: 420px) {
+    .img-2 {
+        width: 133.5%;
+        bottom: 0; /* Changed */
+    }
+    .login {
+        padding-left: 135px;
+    }
+    .img-1 {
+        width: 400px;
+        height: 80px;
+    }
+    .login-logo {
+        padding-left: 100px;
+    }
+    .login-main {
+        height: 100vh; /* Changed */
+    }
+    .login {
+        height: 100vh;
+    }
+}
