@@ -9,7 +9,7 @@ import { DemoNgZorroAntdModule } from 'src/app/ng-zorro-antd.module';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
 
 @NgModule({
-  declarations: [NavbarComponent],
+  declarations: [],
   imports: [
     CommonModule,
     ApplicationRoutingModule,

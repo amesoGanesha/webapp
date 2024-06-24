@@ -1,0 +1,24 @@
+<div class="container">
+    <h1>All Machines</h1>
+
+    <table id="machinesTable">
+        <thead>
+            <tr>
+                <th>Machine ID</th>
+                <th>Factory Name</th>
+                <th>Floor</th>
+                <th>Machine Profile</th>
+                <th>Cloth Quality</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let machine of machineData">
+                <td>{{ machine.MachineID }}</td>
+                <td>{{ machine.FactoryName }}</td>
+                <td>{{ machine.Floor }}</td>
+                <td>{{ machine.MachineProfile }}</td>
+                <td>{{ machine.ClothQuality }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

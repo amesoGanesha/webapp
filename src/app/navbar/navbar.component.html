@@ -6,44 +6,20 @@
   </div>
   
   <ul nz-menu nzMode="inline" [nzTheme]="theme ? 'dark' : 'light'" [nzInlineCollapsed]="isCollapsed" class="menu-content">
-    <li nz-submenu nzOpen nzTitle="Navigation One" nzIcon="mail">
+    <li nz-menu-item [routerLink]="['/App/report']" nzSelected>Report Page</li>
+    <li nz-menu-item [routerLink]="['/App/all-machines']">All Machines</li>
+    <li nz-submenu nzTitle="Operation" nzIcon="setting">
       <ul>
-        <li nz-menu-group nzTitle="Item 1">
-          <ul>
-            <li nz-menu-item nzSelected>Option 1</li>
-            <li nz-menu-item>Option 2</li>
-          </ul>
-        </li>
-        <li nz-menu-group nzTitle="Item 2">
-          <ul>
-            <li nz-menu-item>Option 3</li>
-            <li nz-menu-item>Option 4</li>
-          </ul>
-        </li>
+        <li nz-menu-item [routerLink]="['/App/beam-stock-management']">Beam Stock Management</li>
+        <li nz-menu-item [routerLink]="['/App/defective-meter-entry']">Defective Meter Entry</li>
+        <li nz-menu-item [routerLink]="['/App/yarn-stock-management']">Yarn Stock Management</li>
+        <li nz-menu-item [routerLink]="['/App/cloth-quality-management']">Cloth Quality Management</li>
+        <li nz-menu-item [routerLink]="['/App/operations-ms']">Operations-MS</li>
       </ul>
     </li>
-    <li nz-submenu nzTitle="Navigation Two" nzIcon="appstore">
-      <ul>
-        <li nz-menu-item>Option 5</li>
-        <li nz-menu-item>Option 6</li>
-        <li nz-submenu nzTitle="Submenu">
-          <ul>
-            <li nz-menu-item>Option 7</li>
-            <li nz-menu-item>Option 8</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li nz-submenu nzTitle="Navigation Three" nzIcon="setting">
-      <ul>
-        <li nz-menu-item>Option 9</li>
-        <li nz-menu-item>Option 10</li>
-        <li nz-menu-item>Option 11</li>
-      </ul>
-    </li>
+    <li nz-menu-item [routerLink]="['/App/shift-management']">Shift Management</li>
   </ul>
 
-  <!-- Footer at the bottom -->
   <div class="footer-item">
     <div class="profile-circle" [ngClass]="{'expanded': !isCollapsed}">
       <span class="profile-initials">JD</span>
