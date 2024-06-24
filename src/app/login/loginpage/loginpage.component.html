@@ -6,7 +6,7 @@
             </div>
             <div class="login-content">
                 <p>Sign in and start managing</p>
-                <form [formGroup]="LoginForm">
+                <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
                     <div class="form-group">
                         <input type="text" placeholder="Login" name="login" id="login" formControlName="login">
                     </div>

@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import { ApplicationModule, NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { NzLayoutModule } from 'ng-zorro-antd/layout';
 import { NzMenuModule } from 'ng-zorro-antd/menu';
@@ -9,7 +9,6 @@ import { NzGridModule } from 'ng-zorro-antd/grid';
 import { NzInputModule } from 'ng-zorro-antd/input';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { LoginModule } from './login/login.module';
 import { NZ_I18N } from 'ng-zorro-antd/i18n';
 import { en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
@@ -18,29 +17,23 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
-import { WelcomeComponent } from './welcome/welcome.component';
+import { DemoNgZorroAntdModule } from './ng-zorro-antd.module';
 
 registerLocaleData(en);
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavbarComponent,
-    WelcomeComponent
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    LoginModule,
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    NzLayoutModule,
-    NzMenuModule,
-    NzIconModule,
-    NzButtonModule,
-    NzGridModule,
-    NzInputModule
+    DemoNgZorroAntdModule,
+
     
   ],
   providers: [

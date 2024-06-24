@@ -1,60 +1,57 @@
-<!-- src/app/navbar/navbar.component.html -->
-
-<nz-layout class="app-layout">
-    <nz-sider class="menu-sidebar"
-              nzCollapsible
-              nzWidth="256px"
-              nzBreakpoint="md"
-              [(nzCollapsed)]="isCollapsed"
-              [nzTrigger]="null">
-      <!-- Sider content (left menu) -->
-      <div class="sidebar-logo">
-          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <span class="trigger"
-               nz-icon
-               [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"
-            ></span>
-        </span>
-      </div>
-      <ul nz-menu nzTheme="dark" nzMode="inline" [nzInlineCollapsed]="isCollapsed">
-        <li nz-submenu nzOpen nzTitle="Dashboard" nzIcon="dashboard">
+<div class="wrapper" [ngClass]="{'collapsed': isCollapsed}" [ngStyle]="{'height': '100vh', 'width': isCollapsed ? '80px' : '240px', 'overflow': 'auto', 'transition': 'width 0.3s ease'}">
+  <div class="menu-header">
+    <button nz-button nzSize="large" style="color: white;" nzType="text" class="minimize-button" (click)="toggleCollapsed()">
+      <span nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+    </button>
+  </div>
+  
+  <ul nz-menu nzMode="inline" [nzTheme]="theme ? 'dark' : 'light'" [nzInlineCollapsed]="isCollapsed" class="menu-content">
+    <li nz-submenu nzOpen nzTitle="Navigation One" nzIcon="mail">
+      <ul>
+        <li nz-menu-group nzTitle="Item 1">
           <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a routerLink="/welcome">Welcome</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a>Monitor</a>
-            </li>
-            <li nz-menu-item nzMatchRouter>
-              <a>Workplace</a>
-            </li>
+            <li nz-menu-item nzSelected>Option 1</li>
+            <li nz-menu-item>Option 2</li>
           </ul>
         </li>
-        <li nz-submenu nzOpen nzTitle="Form" nzIcon="form">
+        <li nz-menu-group nzTitle="Item 2">
           <ul>
-            <li nz-menu-item nzMatchRouter>
-              <a>Basic Form</a>
-            </li>
+            <li nz-menu-item>Option 3</li>
+            <li nz-menu-item>Option 4</li>
           </ul>
         </li>
       </ul>
-    </nz-sider>
-    <nz-layout>
-      <nz-header *ngIf="isLoggedIn" class="app-header"> <!-- Conditionally show header -->
-        <!-- Your header content goes here -->
-        <div class="sidebar-logo">
-          <span class="header-trigger" (click)="isCollapsed = !isCollapsed">
-            <span class="trigger" nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
-          </span>
-          <h1>Your App Name</h1>
-        </div>
-      </nz-header>
-      <nz-content>
-        <div class="inner-content">
-          <!-- Your main content goes here -->
-          <router-outlet></router-outlet> <!-- Example: Use router-outlet for dynamic content -->
-        </div>
-      </nz-content>
-    </nz-layout>
-  </nz-layout>
-  
+    </li>
+    <li nz-submenu nzTitle="Navigation Two" nzIcon="appstore">
+      <ul>
+        <li nz-menu-item>Option 5</li>
+        <li nz-menu-item>Option 6</li>
+        <li nz-submenu nzTitle="Submenu">
+          <ul>
+            <li nz-menu-item>Option 7</li>
+            <li nz-menu-item>Option 8</li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li nz-submenu nzTitle="Navigation Three" nzIcon="setting">
+      <ul>
+        <li nz-menu-item>Option 9</li>
+        <li nz-menu-item>Option 10</li>
+        <li nz-menu-item>Option 11</li>
+      </ul>
+    </li>
+  </ul>
+
+  <!-- Footer at the bottom -->
+  <div class="footer-item">
+    <div class="profile-circle" [ngClass]="{'expanded': !isCollapsed}">
+      <span class="profile-initials">JD</span>
+    </div>
+    <nz-switch [(ngModel)]="theme"></nz-switch>
+    <button nz-button nzType="default" class="logout-button" (click)="logout()">
+      <span *ngIf="!isCollapsed">Logout</span>
+      <span *ngIf="isCollapsed" nz-icon nzType="logout"></span>
+    </button>
+  </div>
+</div>
