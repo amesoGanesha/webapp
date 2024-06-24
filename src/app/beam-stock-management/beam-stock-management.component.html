@@ -164,7 +164,7 @@
         <div class="row mb-3">
           <div class="col-md-4">
             <label for="dateRange" class="filter-label">Custom Date Range:</label>
-            <input type="text" id="dateRange" class="form-control filter-input" placeholder="Select Date Range" [(ngModel)]="filters.dateRange">
+            <input type="date" id="dateRange" class="form-control filter-input" placeholder="Select Date Range" [(ngModel)]="filters.dateRange">
           </div>
           <div class="col-md-4">
             <label for="beamQuality" class="filter-label">Beam Quality:</label>
@@ -178,6 +178,7 @@
           <div class="col-md-4">
             <label for="beamNumberRange" class="filter-label">Beam Number Range:</label>
             <input type="text" id="beamNumberRange" class="form-control filter-input" placeholder="Enter Beam Number Range" [(ngModel)]="filters.beamNumberRange">
+            
           </div>
         </div>
       </div>
@@ -208,9 +209,64 @@
       </div>
   
       <!-- Beam Use Report section -->
+      <div *ngIf="currentSection === 'beamUseReport'" class="filters-container">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="factory" class="filter-label">Factory:</label>
+            <select id="factory" class="form-select" [(ngModel)]="beamuseDatafilters.factory">
+              <option value="">All Factories</option>
+              <option value="Factory 1">Factory 1</option>
+              <option value="Factory 2">Factory 2</option>
+              <!-- Add more factory options as needed -->
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="floor" class="filter-label">Floor:</label>
+            <select id="floor" class="form-select" [(ngModel)]="beamuseDatafilters.floor">
+              <option value="">All Floors</option>
+              <option value="Floor 1">Floor 1</option>
+              <option value="Floor 2">Floor 2</option>
+              <!-- Add more floor options as needed -->
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="machineID" class="filter-label">Machine ID:</label>
+            <select id="machineID" class="form-select" [(ngModel)]="beamuseDatafilters.machineID">
+              <option value="">All Machines</option>
+              <option value="M001">M001</option>
+              <option value="M002">M002</option>
+              <!-- Add more machine ID options as needed -->
+            </select>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Beam Usage Report Section -->
       <div *ngIf="currentSection === 'beamUseReport'">
-        <!-- Beam Use Report section content -->
-        <p>Beam Use Report details here...</p>
+        <div class="report-table">
+          <table class="table table-bordered table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Factory</th>
+                <th>Floor</th>
+                <th>Machine ID</th>
+                <th>Beam Stock Number</th>
+                <th>Number of Beams Used</th>
+                <th>Beam Numbers Used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of filterBeamUsageData()">
+                <td>{{ item.factory }}</td>
+                <td>{{ item.floor }}</td>
+                <td>{{ item.machineID }}</td>
+                <td>{{ item.stockNumber }}</td>
+                <td>{{ item.beamsUsed }}</td>
+                <td>{{ item.beamNumbersUsed }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
       </div>
   
       <!-- All Stock Summary section -->

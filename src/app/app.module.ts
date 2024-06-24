@@ -12,7 +12,7 @@ import { AppComponent } from './app.component';
 import { NZ_I18N, en_US } from 'ng-zorro-antd/i18n';
 import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule  } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -45,6 +45,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
+import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
+
 
 registerLocaleData(en);
 
@@ -93,7 +95,9 @@ registerLocaleData(en);
     MatFormFieldModule,
     MatIconModule,
     MatSelectModule,
-    MatCardModule
+    MatCardModule,
+    NgMultiSelectDropDownModule.forRoot(),
+    ReactiveFormsModule ,
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

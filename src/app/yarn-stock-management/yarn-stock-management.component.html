@@ -1,1 +1,67 @@
-<p>yarn-stock-management works!</p>
+<div class="beam-stock-management">
+    <h1>Yarn Stock Management</h1>
+    
+    <!-- Button Section -->
+    <div class="button-section">
+      <button class="button" [ngClass]="{ 'active': currentSection === 'report' }" (click)="switchSection('report')">Yarn Stock Report</button>
+      <button class="button" [ngClass]="{ 'active': currentSection === 'update' }" (click)="switchSection('update')">Update Yarn Stock</button>
+    </div>
+    
+    <!-- Content Sections -->
+    <div *ngIf="currentSection === 'report'" class="content-section">
+      <h2>Yarn Stock Report</h2>
+      <div class="report-table">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>Factory</th>
+                    <th>Date of Entry</th>
+                    <th>Yarn Stock Number</th>
+                    <th>Yarn Quality</th>
+                    <th>Width Meters</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Loop through filtered data -->
+                <tr *ngFor="let yarn of filteredYarnStockData">
+                    <td>{{ yarn.factory }}</td>
+                    <td>{{ yarn.dateOfEntry }}</td>
+                    <td>{{ yarn.yarnStockNumber }}</td>
+                    <td>{{ yarn.yarnQuality }}</td>
+                    <td>{{ yarn.widthMeters }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    </div>
+    
+    <div *ngIf="currentSection === 'update'" class="content-section">
+      <h2>Update Yarn Stock</h2>
+      <form class="form">
+        <div class="form-group">
+          <label for="yarnStockNumber">Yarn Stock Number:</label>
+          <input type="text" id="yarnStockNumber" name="yarnStockNumber" class="form-control" [(ngModel)]="yarnStockNumber">
+        </div>
+        <div class="form-group">
+          <label for="clientId">Client ID:</label>
+          <input type="text" id="clientId" name="clientId" class="form-control" [(ngModel)]="clientId">
+        </div>
+        <div class="form-group">
+          <label for="dateOfEntry">Date of Entry:</label>
+          <input type="date" id="dateOfEntry" name="dateOfEntry" class="form-control" [(ngModel)]="dateOfEntry">
+        </div>
+        <div class="form-group">
+          <label for="yarnQuality">Yarn Quality:</label>
+          <input type="text" id="yarnQuality" name="yarnQuality" class="form-control" [(ngModel)]="yarnQuality">
+        </div>
+        <div class="form-group">
+          <label for="yarnWidthMeter">Yarn Width Meter:</label>
+          <input type="number" id="yarnWidthMeter" name="yarnWidthMeter" class="form-control" [(ngModel)]="yarnWidthMeter">
+        </div>
+        <div class="button-row">
+          <button type="submit" class="btn btn-primary" (click)="updateYarnStock()">Submit</button>
+          <button type="button" class="btn btn-secondary" (click)="resetForm()">Cancel</button>
+        </div>
+      </form>
+    </div>
+</div>

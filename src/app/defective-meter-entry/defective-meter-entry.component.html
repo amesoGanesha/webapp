@@ -1,1 +1,222 @@
-<p>defective-meter-entry works!</p>
+<div class="beam-stock-management">
+    <h1>Defective Meter Entry</h1>
+  
+    <!-- Button Section -->
+    <div class="button-section">
+      <button class="button" [ngClass]="{ 'active': currentSection === 'defectiveMeterEntry' }" (click)="switchSection('defectiveMeterEntry')">Defective Meter Entry</button>
+      <button class="button" [ngClass]="{ 'active': currentSection === 'effectiveProductionReport' }" (click)="switchSection('effectiveProductionReport'); applyFilters()">Effective Production Report</button>
+      <button class="button" [ngClass]="{ 'active': currentSection === 'allDefectiveMeterEntries' }" (click)="switchSection('allDefectiveMeterEntries')">All Defective Meter Entries</button>
+    </div>
+  
+    <!-- Content Sections -->
+    <div *ngIf="currentSection === 'defectiveMeterEntry'" class="content-section">
+      <h2>Defective Meter Entry Details</h2>
+      <div>
+        <!-- Replace with form fields and functionality as needed -->
+        <form class="form">
+          <div class="form-group">
+            <label for="factory">Factory:</label>
+            <select id="factory" name="factory" class="form-control" [(ngModel)]="defectiveEntry.factory">
+              <option value="Factory 1">Factory 1</option>
+              <option value="Factory 2">Factory 2</option>
+              <option value="Factory 3">Factory 3</option>
+              <!-- Add more factory options as needed -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="floor">Floor:</label>
+            <select id="floor" name="floor" class="form-control" [(ngModel)]="defectiveEntry.floor">
+              <option value="Floor 1">Floor 1</option>
+              <option value="Floor 2">Floor 2</option>
+              <option value="Floor 3">Floor 3</option>
+              <!-- Add more floor options as needed -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="machineID">Machine ID:</label>
+            <select id="machineID" name="machineID" class="form-control" [(ngModel)]="defectiveEntry.machineID">
+              <option value="M001">M001</option>
+              <option value="M002">M002</option>
+              <option value="M003">M003</option>
+              <!-- Add more machine ID options as needed -->
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="defectiveDate">Defective Date:</label>
+            <input type="date" id="defectiveDate" name="defectiveDate" class="form-control" [(ngModel)]="defectiveEntry.defectiveDate">
+          </div>
+          <div class="form-group">
+            <label for="shift">Shift:</label>
+            <select id="shift" name="shift" class="form-control" [(ngModel)]="defectiveEntry.shift">
+              <option value="Day Shift">Day Shift</option>
+              <option value="Night Shift">Night Shift</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="defectiveMeters">Defective Meters:</label>
+            <input type="number" id="defectiveMeters" name="defectiveMeters" class="form-control" [(ngModel)]="defectiveEntry.defectiveMeters">
+          </div>
+          <div class="button-row">
+            <button type="submit" class="btn btn-primary" (click)="submitDefectiveEntry()">Submit</button>
+            <button type="button" class="btn btn-secondary" (click)="resetForm()">Reset</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  
+    <div *ngIf="currentSection === 'effectiveProductionReport'" class="content-section">
+      <h2>Effective Production Report</h2>
+      <!-- Filters Section -->
+      <div class="filters-container">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="customerDateRange" class="filter-label">Customer Date Range:</label>
+            <input type="text" id="customerDateRange" class="form-control" placeholder="Select Date Range">
+          </div>
+          <div class="col-md-4">
+            <label class="filter-label">Machine ID:</label>
+            <div class="filter-checkbox-container">
+              <label><input type="checkbox" value="all" (change)="toggleMachineIDFilter($event)"> All Machines</label>
+              <label><input type="checkbox" value="M001" (change)="toggleMachineIDFilter($event)"> M001</label>
+              <label><input type="checkbox" value="M002" (change)="toggleMachineIDFilter($event)"> M002</label>
+              <label><input type="checkbox" value="M003" (change)="toggleMachineIDFilter($event)"> M003</label>
+              <!-- Add more machine options as needed -->
+            </div>
+          </div>
+          <div class="col-md-4">
+            <label class="filter-label">Floor:</label>
+            <div class="filter-checkbox-container">
+              <label><input type="checkbox" value="all" (change)="toggleFloorFilter($event)"> All Floors</label>
+              <label><input type="checkbox" value="Floor 1" (change)="toggleFloorFilter($event)"> Floor 1</label>
+              <label><input type="checkbox" value="Floor 2" (change)="toggleFloorFilter($event)"> Floor 2</label>
+              <label><input type="checkbox" value="Floor 3" (change)="toggleFloorFilter($event)"> Floor 3</label>
+              <!-- Add more floor options as needed -->
+            </div>
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-md-6">
+            <label for="factory" class="filter-label">Factory:</label>
+            <select id="factory" class="form-select" [(ngModel)]="filterOptions.factory">
+              <option value="Factory 1">Factory 1</option>
+              <option value="Factory 2">Factory 2</option>
+              <option value="Factory 3">Factory 3</option>
+              <!-- Add more factory options as needed -->
+            </select>
+          </div>
+          <div class="col-md-6">
+            <label for="shift" class="filter-label">Shift:</label>
+            <select id="shift" class="form-select" [(ngModel)]="filterOptions.shift">
+              <option value="Shift 1">Shift 1</option>
+              <option value="Shift 2">Shift 2</option>
+              <option value="Shift 3">Shift 3</option>
+              <!-- Add more shift options as needed -->
+            </select>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Report Table -->
+      <div class="report-table">
+        <table class="table table-bordered table-hover">
+          <thead class="table-light">
+            <tr>
+              <th>Factory</th>
+              <th>Floor</th>
+              <th>Shift</th>
+              <th>Total Cloth Manufactured</th>
+              <th>Defective Meters</th>
+              <th>Effective Cloth Manufactured</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let data of productionReportData">
+              <td>{{ data.factory }}</td>
+              <td>{{ data.floor }}</td>
+              <td>{{ data.shift }}</td>
+              <td>{{ data.totalClothManufactured }}</td>
+              <td>{{ data.defectiveMeters }}</td>
+              <td>{{ data.effectiveClothManufactured }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      
+    </div>
+  
+    <div *ngIf="currentSection === 'allDefectiveMeterEntries'" class="content-section">
+      <div class="container">
+        <h1 class="text-center">All Defective Meter Entries</h1>
+        
+        <!-- Filters Section -->
+        <div class="filters-container">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="factory" class="filter-label">Factory:</label>
+                    <select id="factory" class="form-select" [(ngModel)]="filterOptions.factory" (change)="applyFilters()">
+                        <option value="">All Factories</option>
+                        <option value="Factory 1">Factory 1</option>
+                        <option value="Factory 2">Factory 2</option>
+                        <option value="Factory 3">Factory 3</option>
+                    </select>
+                </div>
+                <div class="col-md-6">
+                    <label for="floor" class="filter-label">Floor:</label>
+                    <select id="floor" class="form-select" [(ngModel)]="filterOptions.floor" (change)="applyFilters()">
+                        <option value="">All Floors</option>
+                        <option value="Floor 1">Floor 1</option>
+                        <option value="Floor 2">Floor 2</option>
+                        <option value="Floor 3">Floor 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="dateRange" class="filter-label">Custom Date Range:</label>
+                    <input type="date" id="dateRange" class="form-control" placeholder="Select Date Range" [(ngModel)]="filterOptions.dateRange" (change)="applyFilters()">
+                </div>
+                <div class="col-md-6">
+                    <label for="shift" class="filter-label">Shift:</label>
+                    <select id="shift" class="form-select" [(ngModel)]="filterOptions.shift" (change)="applyFilters()">
+                        <option value="">All Shifts</option>
+                        <option value="Shift 1">Shift 1</option>
+                        <option value="Shift 2">Shift 2</option>
+                        <option value="Shift 3">Shift 3</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Report Table -->
+        <div class="report-table">
+            <table class="table table-bordered table-hover">
+                <thead class="table-light">
+                    <tr>
+                        <th>Factory</th>
+                        <th>Floor</th>
+                        <th>Date</th>
+                        <th>Shift</th>
+                        <th>Defective Meters</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let data of filteredProductionReportData">
+                        <td>{{ data.factory }}</td>
+                        <td>{{ data.floor }}</td>
+                        <td>{{ data.date }}</td>
+                        <td>{{ data.shift }}</td>
+                        <td>{{ data.defectiveMeters }}</td>
+                    </tr>
+                    <tr *ngIf="filteredProductionReportData.length === 0">
+                        <td colspan="5" class="text-center">No data available</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    
+      <!-- Replace with content for all defective meter entries -->
+    </div>
+  </div>
+  
+  

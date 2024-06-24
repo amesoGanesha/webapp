@@ -1,11 +1,21 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 
+interface BeamStock {
+  factory: string;
+  floor: string;
+  machineID: string;
+  stockNumber: string;
+  beamsUsed: number;
+  beamNumbersUsed: string;
+}
+
 @Component({
   selector: 'app-beam-stock-management',
   templateUrl: './beam-stock-management.component.html',
   styleUrls: ['./beam-stock-management.component.css']
 })
+
 export class BeamStockManagementComponent implements OnInit {
   currentSection: string = 'allStockSummary'; // Default section to display
   activeButton: string = 'allStockSummary'; // Track the active button
@@ -22,11 +32,23 @@ export class BeamStockManagementComponent implements OnInit {
     // Add more data as needed
   ];
 
+  beamuseData: BeamStock[] = [
+    { factory: 'Factory 1', floor: 'Floor 1', machineID: 'M001', stockNumber: 'BSN1234', beamsUsed: 10, beamNumbersUsed: 'BN001, BN002, BN003, BN004, BN005, BN006, BN007, BN008, BN009, BN010' },
+    { factory: 'Factory 2', floor: 'Floor 2', machineID: 'M002', stockNumber: 'BSN5678', beamsUsed: 15, beamNumbersUsed: 'BN011, BN012, BN013, BN014, BN015' },
+    // Add more data as needed
+  ];
+
   // Define filter properties
   filters = {
     dateRange: '',
     beamQuality: '',
     beamNumberRange: ''
+  };
+
+  beamuseDatafilters = {
+    factory: '',
+    floor: '',
+    machineID: ''
   };
 
   ngOnInit() {
@@ -80,37 +102,64 @@ export class BeamStockManagementComponent implements OnInit {
     console.log('Form reset');
   }
 
-  // Method to filter data based on provided filters
-  filterData(): any[] {
-    let filteredData = this.beamStockData;
+  // Method to filter data based on filters
+// Method to filter data based on filters
+filterData(): any[] {
+  let filteredData = this.beamStockData;
 
-    // Apply filters based on user input
-    if (this.filters.dateRange) {
-      const [startDate, endDate] = this.filters.dateRange.split(' - ').map(dateStr => new Date(dateStr));
-      filteredData = filteredData.filter(item => {
-        const entryDate = new Date(item.entryDate);
-        return entryDate >= startDate && entryDate <= endDate;
-      });
-    }
-    if (this.filters.beamQuality) {
-      filteredData = filteredData.filter(item => item.beamQuality === this.filters.beamQuality);
-    }
-    if (this.filters.beamNumberRange) {
-      const rangeParts = this.filters.beamNumberRange.split('-').map(part => part.trim());
-      const startRange = rangeParts[0];
-      const endRange = rangeParts[1];
+  if (this.filters.dateRange) {
+    const selectedDateStr = this.filters.dateRange;
+    const selectedDate = new Date(selectedDateStr);
 
-      filteredData = filteredData.filter(item => {
-        const itemRange = item.beamNumberRange.split('-').map(part => part.trim());
-        const itemStart = itemRange[0];
-        const itemEnd = itemRange[1];
+    console.log('Selected Date:', selectedDate);
 
-        return (itemStart >= startRange && itemStart <= endRange) || (itemEnd >= startRange && itemEnd <= endRange);
-      });
-    }
-
-    // Return filtered data
-    return filteredData;
+    filteredData = filteredData.filter(item => {
+      const entryDate = new Date(item.entryDate);
+      // Check if the entryDate matches the selectedDate
+      return entryDate.getFullYear() === selectedDate.getFullYear() &&
+             entryDate.getMonth() === selectedDate.getMonth() &&
+             entryDate.getDate() === selectedDate.getDate();
+    });
   }
+
+  if (this.filters.beamQuality) {
+    filteredData = filteredData.filter(item => item.beamQuality === this.filters.beamQuality);
+  }
+
+  if (this.filters.beamNumberRange) {
+    const rangeParts = this.filters.beamNumberRange.split('-').map(part => part.trim());
+    const startRange = rangeParts[0];
+    const endRange = rangeParts[1];
+
+    filteredData = filteredData.filter(item => {
+      const itemRange = item.beamNumberRange.split('-').map(part => part.trim());
+      const itemStart = itemRange[0];
+      const itemEnd = itemRange[1];
+
+      return (itemStart >= startRange && itemStart <= endRange) || (itemEnd >= startRange && itemEnd <= endRange);
+    });
+  }
+
+  return filteredData;
+}
+
+filterBeamUsageData(): BeamStock[] {
+  let filteredData = this.beamuseData;
+
+  // Apply filters
+  if (this.beamuseDatafilters.factory) {
+    filteredData = filteredData.filter(item => item.factory === this.beamuseDatafilters.factory);
+  }
+
+  if (this.beamuseDatafilters.floor) {
+    filteredData = filteredData.filter(item => item.floor === this.beamuseDatafilters.floor);
+  }
+
+  if (this.beamuseDatafilters.machineID) {
+    filteredData = filteredData.filter(item => item.machineID === this.beamuseDatafilters.machineID);
+  }
+
+  return filteredData;
+}
 
 }
