@@ -26,6 +26,25 @@ import { ShiftManagementComponent } from './shift-management/shift-management.co
 import { ReportPageComponent } from './report-page/report-page.component';
 import { AllMachinePageComponent } from './all-machine-page/all-machine-page.component';
 import { LayoutComponent } from './layout/layout.component';
+import { AnalyticReportsComponent } from './analytic-reports/analytic-reports.component';
+import { OperationalReportsComponent } from './operational-reports/operational-reports.component';
+import { DailyEfficiencyReportComponent } from './daily-efficiency-report/daily-efficiency-report.component';
+import { HourlyEfficiencyReportComponent } from './hourly-efficiency-report/hourly-efficiency-report.component';
+import { DailyAccuracyReportComponent } from './daily-accuracy-report/daily-accuracy-report.component';
+import { HourlyAccuracyReportComponent } from './hourly-accuracy-report/hourly-accuracy-report.component';
+import { DailyProductionReportComponent } from './daily-production-report/daily-production-report.component';
+import { ProductionReportComponent } from './production-report/production-report.component';
+import { ClothQualityReportComponent } from './cloth-quality-report/cloth-quality-report.component';
+import { DefectiveMeterReportComponent } from './defective-meter-report/defective-meter-report.component';
+import { EffectiveProductionReportComponent } from './effective-production-report/effective-production-report.component';
+import { YarnStockReportComponent } from './yarn-stock-report/yarn-stock-report.component';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatInputModule } from '@angular/material/input';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatIconModule } from '@angular/material/icon';
+import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
 
 registerLocaleData(en);
 
@@ -42,6 +61,18 @@ registerLocaleData(en);
     OperationsMSComponent,
     ShiftManagementComponent,
     LayoutComponent,
+    AnalyticReportsComponent,
+    OperationalReportsComponent,
+    DailyEfficiencyReportComponent,
+    HourlyEfficiencyReportComponent,
+    DailyAccuracyReportComponent,
+    HourlyAccuracyReportComponent,
+    DailyProductionReportComponent,
+    ProductionReportComponent,
+    ClothQualityReportComponent,
+    DefectiveMeterReportComponent,
+    EffectiveProductionReportComponent,
+    YarnStockReportComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,6 +87,13 @@ registerLocaleData(en);
     NzButtonModule,
     NzGridModule,
     NzInputModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule,
+    MatFormFieldModule,
+    MatIconModule,
+    MatSelectModule,
+    MatCardModule
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US }

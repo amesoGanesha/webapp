@@ -1,0 +1,60 @@
+<div class="container">
+    <h1>Daily Production Report</h1>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="form-group">
+          <label for="dateSelect">Select Date:</label>
+          <select id="dateSelect" class="form-control" [(ngModel)]="selectedDate" (change)="onSelectDate()">
+            <option value="today">Today</option>
+            <option value="yesterday">Yesterday</option>
+            <option value="customRange">Custom Date</option>
+          </select>
+        </div>
+        <div class="form-group" *ngIf="selectedDate === 'customRange'">
+          <label for="from">From</label>
+          <input type="date" id="from" name="from" placeholder="YYYY-MM-DD">
+        </div>
+      </div>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-bordered">
+        <thead>
+          <tr>
+            <th>Machine ID</th>
+            <th>Operator Name</th>
+            <th>Machine Speed</th>
+            <th>Quality</th>
+            <th>Shift</th>
+            <th>Uptime</th>
+            <th>Meter Produced</th>
+            <th>Total Meter Produced</th>
+            <th>Weight Of Cloth</th>
+            <th>Total Weight Of Cloth</th>
+            <th>Defective Meter</th>
+            <th>Total Defective Meter</th>
+            <th>Effective Meters Produced</th>
+            <th>Total Effective Meters Produced</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let row of filteredData">
+            <td>{{ row.MachineID }}</td>
+            <td>{{ row.OperatorName }}</td>
+            <td>{{ row.MachineSpeed }}</td>
+            <td>{{ row.Quality }}</td>
+            <td>{{ row.Shift }}</td>
+            <td>{{ row.Uptime }}</td>
+            <td>{{ row.MeterProduced }}</td>
+            <td>{{ row.TotalMeterProduced }}</td>
+            <td>{{ row.WeightOfCloth }}</td>
+            <td>{{ row.TotalWeightOfCloth }}</td>
+            <td>{{ row.DefectiveMeter }}</td>
+            <td>{{ row.TotalDefectiveMeter }}</td>
+            <td>{{ row.EffectiveMetersProduced }}</td>
+            <td>{{ row.TotalEffectiveMetersProduced }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

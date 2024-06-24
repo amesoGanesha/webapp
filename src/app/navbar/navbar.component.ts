@@ -10,8 +10,10 @@ import { NzMessageService } from 'ng-zorro-antd/message';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  router: any;
   ngOnInit(): void {
-    throw new Error('Method not implemented.');
+    console.log('NavbarComponent initialized');
+    // throw new Error('Method not implemented.');
   }
   theme = true; // true for dark theme, false for light theme
   isCollapsed = false;
@@ -31,4 +33,5 @@ export class NavbarComponent implements OnInit {
     // Example: Redirect to login page
     // this.router.navigate(['/login']); // Ensure Router is imported
   }
+  
 }

@@ -1,0 +1,60 @@
+<div class="report-container">
+    <h1>Cloth Quality Report</h1>
+    <div class="filters">
+        <label>Date Range:</label>
+        <input type="date" id="dateRange" [(ngModel)]="dateRange" (change)="applyFilter()">
+        
+        <label>Shift:</label>
+        <select id="shiftSelect" [(ngModel)]="shiftSelect" (change)="applyFilter()">
+            <option value="">All Shifts</option>
+            <option value="Day Shift">Day Shift</option>
+            <option value="Night Shift">Night Shift</option>
+            <!-- Add other shifts here -->
+        </select>
+        
+        <label>Factory:</label>
+        <select id="factorySelect" [(ngModel)]="factorySelect" (change)="applyFilter()">
+            <option value="">All Factories</option>
+            <option value="Quality 1">Quality 1</option>
+            <option value="Quality 2">Quality 2</option>
+            <!-- Add other factories here -->
+        </select>
+        
+        <label>Floor:</label>
+        <select id="floorSelect" [(ngModel)]="floorSelect" (change)="applyFilter()">
+            <option value="">All Floors</option>
+            <option value="1">1 floor</option>
+            <option value="2">2 floor</option>
+            <!-- Add other floors here -->
+        </select>
+    </div>
+    
+    <table id="reportTable">
+        <thead>
+            <tr>
+                <th>Quality</th>
+                <th>Shift</th>
+                <th>Cloth Produced</th>
+                <th>Defective Meter</th>
+                <th>Effective Meter Produced</th>
+                <th>Efficiency %</th>
+                <th>Loss %</th>
+                <th>Beam Used</th>
+                <th>Yarn Used</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of filteredData">
+                <td>{{ row.quality }}</td>
+                <td>{{ row.shift }}</td>
+                <td>{{ row.clothProduced }}</td>
+                <td>{{ row.defectiveMeter }}</td>
+                <td>{{ row.effectiveMeterProduced }}</td>
+                <td>{{ row.efficiencyPercent }}%</td>
+                <td>{{ row.lossPercent }}%</td>
+                <td>{{ row.beamUsed }}</td>
+                <td>{{ row.yarnUsed }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

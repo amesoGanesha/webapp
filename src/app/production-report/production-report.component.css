@@ -1,0 +1,103 @@
+/* Styles for the main container */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    padding: 20px;
+    background-color: #f7f7f7;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Heading style */
+  h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  
+  /* Table container style */
+  .report-table {
+    margin-top: 20px;
+    overflow-x: auto; /* Adds horizontal scroll if content overflows */
+  }
+  
+  /* Table style */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+  }
+  
+  /* Table header cell style */
+  .table thead th {
+    padding: 12px 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+    background-color: #f2f2f2;
+  }
+  
+  /* Table body row style */
+  .table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+  }
+  
+  /* Hover effect for table rows */
+  .table tbody tr:hover {
+    background-color: #e0e0e0;
+  }
+  
+  /* Table cell style */
+  .table td {
+    padding: 10px;
+    text-align: left;
+    vertical-align: middle;
+    font-size: 14px;
+  }
+  
+  /* Input and select style for filters */
+  .filter-input,
+  .filter-select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ced4da;
+  }
+  
+  /* Card style for report details */
+  .card {
+    margin-top: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Card body style */
+  .card-body {
+    padding: 20px;
+  }
+  
+  /* Card title style */
+  .card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .container {
+      padding: 10px;
+    }
+    .card-body {
+      padding: 10px;
+    }
+    .table td,
+    .table th {
+      font-size: 12px;
+    }
+  }
+  

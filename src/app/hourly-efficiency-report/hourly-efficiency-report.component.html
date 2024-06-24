@@ -1,0 +1,33 @@
+<div class="container">
+    <h1 class="text-center" style="color: #15AEE4;">Hourly Efficiency Report</h1>
+    <div class="filter-group">
+      <div class="form-row">
+        <div class="form-group col-md-4">
+          <label for="factorySelect">Factory</label>
+          <select id="factorySelect" class="form-control" (change)="onFactoryChange($event)">
+            <option selected>1st Factory</option>
+            <option>2nd Factory</option>
+            <option>3rd Factory</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="floorSelect">Floor</label>
+          <select id="floorSelect" class="form-control" (change)="onFloorChange($event)">
+            <option value="">Select Floor</option>
+            <option>Floor 1</option>
+            <option>Floor 2</option>
+            <option>Floor 3</option>
+          </select>
+        </div>
+        <div class="form-group col-md-4">
+          <label for="dateSelect">Date</label>
+          <input type="date" id="dateSelect" class="form-control" placeholder="Select Date" (change)="onDateChange($event)">
+        </div>
+      </div>
+    </div>
+  
+    <div class="chart-container">
+      <canvas id="efficiencyChart"></canvas>
+    </div>
+  </div>
+  

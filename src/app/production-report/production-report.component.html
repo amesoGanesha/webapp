@@ -1,0 +1,39 @@
+<div class="container mt-5">
+    <h1 class="mb-4">Production Report</h1>
+  
+    <div class="report-table">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Total Machines</th>
+            <th scope="col">Cloth Produced</th>
+            <th scope="col">Efficiency %</th>
+            <th scope="col">Accuracy %</th>
+            <th scope="col">Yarn Used</th>
+            <th scope="col">Beam Used</th>
+            <th scope="col">Incoming Beam Stock</th>
+            <th scope="col">Incoming Yarn Stock</th>
+            <th scope="col">Beam In-Stock</th>
+            <th scope="col">Beam In-Use</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{{ productionData[0].id }}</td>
+            <td>{{ productionData[0].totalMachines }}</td>
+            <td>{{ productionData[0].clothProduced }}</td>
+            <td>{{ productionData[0].efficiency }}</td>
+            <td>{{ productionData[0].accuracy }}</td>
+            <td>{{ productionData[0].yarnUsed }}</td>
+            <td>{{ productionData[0].beamUsed }}</td>
+            <td>{{ productionData[0].incomingBeamStock }}</td>
+            <td>{{ productionData[0].incomingYarnStock }}</td>
+            <td>{{ productionData[0].beamInStock }}</td>
+            <td>{{ productionData[0].beamInUse }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
