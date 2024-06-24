@@ -1,0 +1,94 @@
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    background-color: #001529;
+    color: white;
+    position: relative;
+  }
+  
+  .menu-header {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .collapsed .menu-header {
+    justify-content: center;
+  }
+  
+  .menu-content {
+    flex: 1; /* Allows the menu content to take up all available space */
+  }
+  
+  .footer-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+    margin-top: auto; /* Pushes footer to the bottom */
+    background-color: #001529; /* Matches the background color */
+  }
+  
+  .footer-item .profile-circle,
+  .footer-item nz-switch,
+  .footer-item .logout-button {
+    margin-bottom: 10px; /* Adds vertical spacing between each element */
+  }
+  
+  .profile-circle {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #1890ff;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  
+  .profile-circle.expanded {
+    width: 60px;
+    height: 60px;
+    font-size: 24px;
+  }
+  
+  .profile-initials {
+    color: white;
+  }
+  
+  .logout-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 0;
+  }
+  
+  .theme-switch-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .theme-text {
+    display: flex;
+    align-items: center;
+    margin-left: 10px;
+  }
+  
+  .half-moon-icon {
+    margin-right: 5px;
+  }
+  
+  .collapsed .profile-circle,
+  .collapsed nz-switch,
+  .collapsed .logout-button {
+    margin: 10px 0; /* Adds vertical spacing between elements in collapsed state */
+  }
+  
+  .collapsed .footer-item {
+    flex-direction: column; /* Stack items vertically when collapsed */
+    align-items: center; /* Center align items */
+    text-align: center; /* Center align text */
+  }

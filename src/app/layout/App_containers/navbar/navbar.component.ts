@@ -1,6 +1,6 @@
 // src/app/navbar/navbar.component.ts
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from '../auth.service';
+import { AuthService } from '../../../auth.service';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd/message';
 

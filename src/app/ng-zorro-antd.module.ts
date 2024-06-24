@@ -146,5 +146,5 @@ export class DemoNgZorroAntdModule {
   static forRoot(): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
     throw new Error('Method not implemented.');
   }
-
+     
 }

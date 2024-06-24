@@ -1,6 +1,71 @@
-<!-- <app-navbar></app-navbar> -->
-<router-outlet></router-outlet>
-
-
-
-
+<div *ngIf="!isAuthenticated">
+    <!-- Placeholder or redirect logic for non-authenticated users -->
+    <router-outlet></router-outlet>
+  </div>
+  
+  <div *ngIf="isAuthenticated">
+    <div style="display: flex; height:100vh">
+      <div class="wrapper" [ngClass]="{'collapsed': isCollapsed}" [ngStyle]="{'width': isCollapsed ? '80px' : '240px'}">
+        <div class="menu-header">
+          <button nz-button nzSize="large" style="color: white;" nzType="text" class="minimize-button" (click)="toggleCollapsed()">
+            <span nz-icon [nzType]="isCollapsed ? 'menu-unfold' : 'menu-fold'"></span>
+          </button>
+        </div>
+        
+        <ul nz-menu nzMode="inline" [nzTheme]="theme ? 'dark' : 'light'" [nzInlineCollapsed]="isCollapsed" class="menu-content">
+          <li nz-menu-item [routerLink]="['/App/report']" nzSelected>
+            <span nz-icon nzType="file-text"></span>
+            <span>Report Page</span>
+          </li>
+          <li nz-menu-item [routerLink]="['/App/all-machines']">
+            <span nz-icon nzType="tool"></span>
+            <span>All Machines</span>
+          </li>
+          <li nz-submenu nzTitle="Operation" nzIcon="setting">
+            <ul>
+              <li nz-menu-item [routerLink]="['/App/beam-stock-management']">
+                <span nz-icon nzType="database"></span>
+                <span>Beam Stock Management</span>
+              </li>
+              <li nz-menu-item [routerLink]="['/App/defective-meter-entry']">
+                <span nz-icon nzType="bug"></span>
+                <span>Defective Meter Entry</span>
+              </li>
+              <li nz-menu-item [routerLink]="['/App/yarn-stock-management']">
+                <span nz-icon nzType="safety"></span>
+                <span>Yarn Stock Management</span>
+              </li>
+              <li nz-menu-item [routerLink]="['/App/cloth-quality-management']">
+                <span nz-icon nzType="highlight"></span>
+                <span>Cloth Quality Management</span>
+              </li>
+              <li nz-menu-item [routerLink]="['/App/operations-ms']">
+                <span nz-icon nzType="deployment-unit"></span>
+                <span>Operations-MS</span>
+              </li>
+            </ul>
+          </li>
+          <li nz-menu-item [routerLink]="['/App/shift-management']">
+            <span nz-icon nzType="calendar"></span>
+            <span>Shift Management</span>
+          </li>
+        </ul>
+      
+        <div class="footer-item">
+          <div class="profile-circle" [ngClass]="{'expanded': !isCollapsed}">
+            <span class="profile-initials">JD</span>
+          </div>
+          <nz-switch [(ngModel)]="theme"></nz-switch>
+          <button nz-button nzType="default" class="logout-button" (click)="onLogout()">
+            <span *ngIf="!isCollapsed">Logout</span>
+            <span *ngIf="isCollapsed" nz-icon nzType="logout"></span>
+          </button>
+        </div>
+      </div>
+    
+      <div class="container cont">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+  
