@@ -1,0 +1,77 @@
+<div class="container">
+    <h1 class="text-center">AmesoTags Report</h1>
+    
+    <!-- Filters Section -->
+    <div class="filters-container">
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="clientID" class="filter-label">ClientID:</label>
+                <input type="text" id="clientID" class="form-control filter-input" placeholder="Enter ClientID" [(ngModel)]="clientID" (input)="applyFilters()">
+            </div>
+            <div class="col-md-3">
+                <label for="factory" class="filter-label">Factory:</label>
+                <input type="text" id="factory" class="form-control filter-input" placeholder="Enter Factory" [(ngModel)]="factory" (input)="applyFilters()">
+            </div>
+            <div class="col-md-3">
+                <label for="floor" class="filter-label">Floor:</label>
+                <input type="text" id="floor" class="form-control filter-input" placeholder="Enter Floor" [(ngModel)]="floor" (input)="applyFilters()">
+            </div>
+            <div class="col-md-3">
+                <label for="customerName" class="filter-label">Customer Name:</label>
+                <input type="text" id="customerName" class="form-control filter-input" placeholder="Enter Customer Name" [(ngModel)]="customerName" (input)="applyFilters()">
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-3">
+                <label for="status" class="filter-label">AmesoTag Status:</label>
+                <select id="status" class="form-select filter-input" [(ngModel)]="status" (change)="applyFilters()">
+                    <option value="">Select Status</option>
+                    <option value="Active">Active</option>
+                    <option value="Inactive">Inactive</option>
+                    <option value="Unknown">Unknown</option>
+                </select>
+            </div>
+            <div class="col-md-3">
+                <label for="firmware" class="filter-label">Firmware Version:</label>
+                <input type="text" id="firmware" class="form-control filter-input" placeholder="Enter Firmware Version" [(ngModel)]="firmwareVersion" (input)="applyFilters()">
+            </div>
+            <div class="col-md-3">
+                <button class="btn btn-secondary mt-4" (click)="resetFilters()">Reset Filters</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Report Table -->
+    <div class="report-table">
+        <table class="table table-bordered table-hover">
+            <thead class="table-light">
+                <tr>
+                    <th>ClientID</th>
+                    <th>Customer Name</th>
+                    <th>Serial Number</th>
+                    <th>Factory</th>
+                    <th>Floor</th>
+                    <th>MachineID</th>
+                    <th>Boot Count</th>
+                    <th>AmesoTag Status</th>
+                    <th>Firmware Version</th>
+                    <th>Last Reboot Time</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of filteredData">
+                    <td>{{ data.clientID }}</td>
+                    <td>{{ data.customerName }}</td>
+                    <td>{{ data.serialNumber }}</td>
+                    <td>{{ data.factory }}</td>
+                    <td>{{ data.floor }}</td>
+                    <td>{{ data.machineID }}</td>
+                    <td>{{ data.bootCount }}</td>
+                    <td>{{ data.amesoTagStatus }}</td>
+                    <td>{{ data.firmwareVersion }}</td>
+                    <td>{{ data.lastRebootTime }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

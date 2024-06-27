@@ -1,0 +1,46 @@
+<div class="container">
+    <h1 class="text-center">AmesoTags Report</h1>
+    <!-- Filters Section -->
+    <div class="filters-container">
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <label for="clientID" class="filter-label">Machine Type:</label>
+          <input type="text" id="clientID" class="form-control filter-input" placeholder="Enter Machine Type" [(ngModel)]="clientID" (input)="applyFilters()">
+        </div>
+        <div class="col-md-3">
+          <label for="factory" class="filter-label">Digital Machine:</label>
+          <input type="text" id="factory" class="form-control filter-input" placeholder="Enter Digital Machine" [(ngModel)]="factory" (input)="applyFilters()">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3">
+          <button class="btn btn-secondary mt-4" (click)="resetFilters()">Reset Filters</button>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Report Table -->
+    <div class="report-table">
+      <table class="table table-bordered table-hover">
+        <thead class="table-light">
+          <tr>
+            <th>ProfileID</th>
+            <th>Machine Type</th>
+            <th>Machine Make/Company Name</th>
+            <th>Model Number</th>
+            <th>Digital Machine</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let profile of filteredProfiles">
+            <td>{{ profile.profileID }}</td>
+            <td>{{ profile.machineType }}</td>
+            <td>{{ profile.machineMake }}</td>
+            <td>{{ profile.modelNumber }}</td>
+            <td>{{ profile.digitalMachine }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  

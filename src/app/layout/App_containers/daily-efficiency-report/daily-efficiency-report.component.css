@@ -1,0 +1,7 @@
+.form-row{
+    display: flex;
+    gap:10px;
+}
+.container-2{
+    width:900px;
+}

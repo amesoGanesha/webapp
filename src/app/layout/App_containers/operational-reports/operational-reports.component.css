@@ -1,0 +1,40 @@
+.report-details{
+    height:450px;
+    width:500px;
+    background-color: #F5F5F5;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    justify-content: center;
+}
+.report-details a{
+ text-decoration: none;
+ text-align: center;
+ color: #fff;
+ background-color:#15AEE4;
+ padding: 10px 20px;
+ border-radius: 5px;
+ text-decoration: none; /* Remove underline */
+}
+.button-container-2{
+    display: flex;
+    gap:10px;
+}
+.operational-buttons{
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Equal gap between the buttons */
+    margin-top:10px;
+}
+.operational-buttons a{
+    display: flex; /* Enable flexbox properties */
+    justify-content: center; /* Center content horizontally */
+    align-items: center; /* Center content vertically */
+    width: 300px;
+    padding: 10px 20px;
+    margin-left:25px;
+    border-radius: 5px;
+    background-color: #FF5733;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+}

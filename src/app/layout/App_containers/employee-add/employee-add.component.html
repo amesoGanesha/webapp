@@ -1,0 +1,71 @@
+<div class="container">
+    <h1>Employee Shift Management</h1>
+    <form id="employee-form">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="employee-name">Employee Name:</label>
+                <input type="text" id="employee-name" name="employee-name" class="form-control" required>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="employee-id">Employee ID:</label>
+                <input type="text" id="employee-id" name="employee-id" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="employee-shift">Shift:</label>
+                <select id="employee-shift" name="employee-shift" class="form-control" required>
+                    <option value="">Select Shift</option>
+                    <option value="day">Day Shift</option>
+                    <option value="night">Night Shift</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="employee-gender">Gender:</label>
+                <select id="employee-gender" name="employee-gender" class="form-control" required>
+                    <option value="">Select Gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="selectFactory" class="form-label">Select Factory:</label>
+                <select id="selectFactory" name="selectFactory" class="form-control" required>
+                    <option selected disabled>Select Factory...</option>
+                    <option value="factory1">Factory 1</option>
+                    <option value="factory2">Factory 2</option>
+                    <option value="factory3">Factory 3</option>
+                </select>
+            </div>
+
+            <div class="form-group col-md-6">
+                <label for="selectFloor" class="form-label">Select Floor:</label>
+                <select id="selectFloor" name="selectFloor" class="form-control" required>
+                    <option selected disabled>Select Floor...</option>
+                    <option value="floor1">Floor 1</option>
+                    <option value="floor2">Floor 2</option>
+                    <option value="floor3">Floor 3</option>
+                </select>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="date-range">Date Range:</label>
+            <div class="input-group">
+                <input type="date" id="start-date" name="start-date" class="form-control" required>
+                <div class="input-group-append">
+                    <span class="input-group-text">to</span>
+                </div>
+                <input type="date" id="end-date" name="end-date" class="form-control" required>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Employee</button>
+    </form>
+</div>

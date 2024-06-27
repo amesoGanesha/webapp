@@ -1,0 +1,24 @@
+<!-- status-dashboard.component.html -->
+<div class="container">
+    <div class="card">
+      <h2>Status Counts</h2>
+      <div class="flex-container">
+        <div class="count-box green">Running: <span>{{ runningCount }}</span></div>
+        <div class="count-box red">Stopped: <span>{{ stoppedCount }}</span></div>
+        <div class="count-box grey">Unknown: <span>{{ unknownCount }}</span></div>
+      </div>
+    </div>
+    <div class="card">
+      <h2>Machine Status</h2>
+      <div class="container" id="machine-status-container">
+        <div *ngFor="let machine of machineStatusData" class="status-box" [ngClass]="{
+          'green': machine.CurrentStatus === 'running',
+          'red': machine.CurrentStatus === 'stopped',
+          'grey': machine.CurrentStatus !== 'running' && machine.CurrentStatus !== 'stopped'
+        }">
+          <div class="machine-id">Machine ID: {{ machine.MachineID }}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

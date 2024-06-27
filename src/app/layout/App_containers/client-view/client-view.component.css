@@ -1,0 +1,37 @@
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    flex-direction: column;
+}
+
+#clientCardContainer {
+    width: 100%;
+    max-width: 600px;
+    text-align: center; /* Center align the content inside the card container */
+}
+
+.card {
+    width: 100%;
+    max-width: 400px; /* Adjust width as per your design */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow effect */
+}
+
+.card-header {
+    background-color: #f8f9fa; /* Light background color for header */
+    border-bottom: 1px solid #dee2e6; /* Border bottom for separation */
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.card-body {
+    padding-top: 20px; /* Add padding for content inside the card */
+}
+
+.btn-primary,
+.btn-secondary {
+    margin-top: 10px; /* Adjust spacing for buttons */
+}

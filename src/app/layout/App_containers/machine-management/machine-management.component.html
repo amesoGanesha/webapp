@@ -1,0 +1,56 @@
+<div class="container">
+    <h2>Add Machines to Customer</h2>
+    <form (ngSubmit)="onSubmit()">
+        <div class="mb-3">
+            <label for="machineId" class="form-label">Machine ID:</label>
+            <input type="text" class="form-control" id="machineId" placeholder="Enter Machine ID" required>
+        </div>
+        <div class="mb-3">
+            <label for="selectFactory" class="form-label">Select Factory:</label>
+            <select class="form-select" id="selectFactory" required>
+                <option selected disabled>Select Factory...</option>
+                <option value="factory1">Factory 1</option>
+                <option value="factory2">Factory 2</option>
+                <option value="factory3">Factory 3</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="selectFloor" class="form-label">Select Floor:</label>
+            <select class="form-select" id="selectFloor" required>
+                <option selected disabled>Select Floor...</option>
+                <option value="floor1">Floor 1</option>
+                <option value="floor2">Floor 2</option>
+                <option value="floor3">Floor 3</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="selectMachineProfile" class="form-label">Select Machine Profile:</label>
+            <select class="form-select" id="selectMachineProfile" required>
+                <option selected disabled>Select Machine Profile...</option>
+                <option value="profileA">Profile A</option>
+                <option value="profileB">Profile B</option>
+                <option value="profileC">Profile C</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="panna" class="form-label">Panna:</label>
+            <input type="number" id="panna" class="form-control" placeholder="Enter Panna" min="1" step="1">
+        </div>
+        <div class="mb-3">
+            <label for="rpm" class="form-label">RPM:</label>
+            <input type="number" id="rpm" class="form-control" placeholder="Enter RPM" min="1" step="1">
+        </div>
+        
+        <!-- Import Machines section -->
+        <div class="mb-3">
+            <label for="importFile" class="form-label">Import Machines (CSV if multiple data there pls use upload file ):</label>
+            <input type="file" class="form-control" id="importFile" accept=".csv" (change)="importMachines($event)" required>
+            <small class="text-muted">Upload a CSV file containing machine information.</small>
+        </div>
+        
+        <!-- Add Machine button -->
+        <button type="submit" class="btn btn-primary">Add Machine</button>
+        
+        <!-- Import Machines button -->
+    </form>
+</div>

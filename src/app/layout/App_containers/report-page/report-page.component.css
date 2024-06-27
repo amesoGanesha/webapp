@@ -1,0 +1,21 @@
+.button-container a{
+ text-decoration: none;
+ text-align: center;
+ color: #fff;
+ background-color:#15AEE4;
+ padding: 10px 20px;
+ border-radius: 5px;
+ text-decoration: none; /* Remove underline */
+}
+.button-container{
+    display: flex;
+    gap:10px;
+}
+.report-page-content{
+    height:200px;
+    width:500px;
+    background-color: #F5F5F5;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    display: flex;
+    justify-content: center;
+}

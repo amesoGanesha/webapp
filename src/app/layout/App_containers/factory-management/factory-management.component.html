@@ -1,0 +1,83 @@
+<!-- factory-management.component.html -->
+
+<div class="container">
+    <h1 class="text-center">Factory Management</h1>
+    
+    <!-- Form -->
+    <form (ngSubmit)="submitForm()" #factoryForm="ngForm">
+        <!-- Factory Details -->
+        <div class="mb-3">
+            <h3>Factory Details</h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <label for="factoryId" class="form-label">Factory ID:</label>
+                    <input type="text" id="factoryId" class="form-control" name="factoryId" [(ngModel)]="factory.factoryId" required>
+                </div>
+                <div class="col-md-6">
+                    <label for="factoryName" class="form-label">Factory Name:</label>
+                    <input type="text" id="factoryName" class="form-control" name="factoryName" [(ngModel)]="factory.factoryName" required>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="factoryLocation" class="form-label">Factory Location:</label>
+                    <input type="text" id="factoryLocation" class="form-control" name="factoryLocation" [(ngModel)]="factory.factoryLocation">
+                </div>
+                <div class="col-md-6">
+                    <label for="floors" class="form-label">Floors:</label>
+                    <input type="number" id="floors" class="form-control" name="floors" [(ngModel)]="factory.floors">
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-md-6">
+                    <label for="factoryAddress" class="form-label">Factory Address:</label>
+                    <textarea id="factoryAddress" class="form-control" name="factoryAddress" [(ngModel)]="factory.factoryAddress"></textarea>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Primary Contact Details -->
+        <div class="mb-3">
+            <h3>Primary Contact</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="primaryContactName" class="form-label">Name:</label>
+                    <input type="text" id="primaryContactName" class="form-control" name="primaryContactName" [(ngModel)]="factory.primaryContact.name">
+                </div>
+                <div class="col-md-4">
+                    <label for="primaryContactEmail" class="form-label">Email:</label>
+                    <input type="email" id="primaryContactEmail" class="form-control" name="primaryContactEmail" [(ngModel)]="factory.primaryContact.email">
+                </div>
+                <div class="col-md-4">
+                    <label for="primaryContactPhone" class="form-label">Phone Number:</label>
+                    <input type="tel" id="primaryContactPhone" class="form-control" name="primaryContactPhone" [(ngModel)]="factory.primaryContact.phone">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Secondary Contact Details -->
+        <div class="mb-3">
+            <h3>Secondary Contact</h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <label for="secondaryContactName" class="form-label">Name:</label>
+                    <input type="text" id="secondaryContactName" class="form-control" name="secondaryContactName" [(ngModel)]="factory.secondaryContact.name">
+                </div>
+                <div class="col-md-4">
+                    <label for="secondaryContactEmail" class="form-label">Email:</label>
+                    <input type="email" id="secondaryContactEmail" class="form-control" name="secondaryContactEmail" [(ngModel)]="factory.secondaryContact.email">
+                </div>
+                <div class="col-md-4">
+                    <label for="secondaryContactPhone" class="form-label">Phone Number:</label>
+                    <input type="tel" id="secondaryContactPhone" class="form-control" name="secondaryContactPhone" [(ngModel)]="factory.secondaryContact.phone">
+                </div>
+            </div>
+        </div>
+        
+        <!-- Buttons -->
+        <div class="mt-4">
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="button" class="btn btn-secondary ms-2" (click)="cancel()">Cancel</button>
+        </div>
+    </form>
+</div>

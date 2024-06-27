@@ -1,0 +1,34 @@
+<div class="container center-container">
+    <h1 class="mb-4 text-center">Client Side Page</h1>
+    
+    <!-- Filters Section -->
+    <div class="row mb-4 filters-container w-100 justify-content-center">
+        <div class="col-md-4">
+            <label for="clientId" class="form-label">Client ID:</label>
+            <select class="form-select filter-select" id="clientId" (change)="onClientChange($event)">
+                <option value="">Select Client ID</option>
+                <option value="AMC 001">AMC 001</option>
+                <option value="AMC 002">AMC 002</option>
+                <option value="AMC 003">AMC 003</option>
+            </select>
+        </div>
+    </div>
+    
+    <!-- Card Container -->
+    <div id="clientCardContainer" class="mt-4" [style.display]="cardVisible ? 'block' : 'none'">
+        <div class="card shadow-sm">
+            <div class="card-header bg-light">
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><strong>Client ID:</strong> {{ selectedClientId }}</li>
+                </ul>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Client Details Here</p>
+                <div class="d-flex justify-content-end">
+                    <button type="button" class="btn btn-primary me-2" (click)="onGo()">Go</button>
+                    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

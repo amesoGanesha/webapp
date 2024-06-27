@@ -1,0 +1,297 @@
+<div class="beam-stock-management">
+    <!-- Header section -->
+    <h2>Beam Stock Management</h2>
+  
+    <!-- Button section -->
+    <div class="button-section">
+        <button class="button" [class.active]="isButtonActive('addNewStock')" (click)="switchSection('addNewStock', 'addNewStock')">Add New Stock</button>
+        <button class="button" [class.active]="isButtonActive('useBeam')" (click)="switchSection('useBeam', 'useBeam')">Use Beam</button>
+        <button class="button" [class.active]="isButtonActive('beamStockReport')" (click)="switchSection('beamStockReport', 'beamStockReport')">Beam Stock Report</button>
+        <button class="button" [class.active]="isButtonActive('beamUseReport')" (click)="switchSection('beamUseReport', 'beamUseReport')">Beam Use Report</button>
+        <button class="button" [class.active]="isButtonActive('allStockSummary')" (click)="switchSection('allStockSummary', 'allStockSummary')">All Stock Summary</button>
+      </div>
+    
+  
+    <!-- Content section -->
+    <div class="content-section">
+      <div *ngIf="currentSection === 'beamStockHead'">
+        <!-- Initial section content -->
+        <p>Welcome to Beam Stock Management. Please select an action.</p>
+      </div>
+  
+      <!-- Add New Stock section -->
+      <div *ngIf="currentSection === 'addNewStock'">
+        <!-- Tab buttons -->
+        <div class="tab-buttons">
+          <button class="tab-button" [class.active]="activeTab === 'newBeamEntryForm'" (click)="switchTab('newBeamEntryForm')">New Beam Entry Form</button>
+          <button class="tab-button" [class.active]="activeTab === 'beamDetailsForm'" (click)="switchTab('beamDetailsForm')">Beam Details Form</button>
+        </div>
+  
+        <!-- Tab content based on active tab -->
+        <div *ngIf="activeTab === 'newBeamEntryForm'">
+          <!-- New Beam Entry Form -->
+          <form #newBeamEntryForm="ngForm" (ngSubmit)="onSubmit(newBeamEntryForm)" (reset)="onReset(newBeamEntryForm)" class="form">
+            <div class="form-group">
+              <label for="beamStockNumber">Beam Stock Number:</label>
+              <input type="text" id="beamStockNumber" name="beamStockNumber" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="beamNumber">Beam Number:</label>
+              <input type="text" id="beamNumber" name="beamNumber" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="beamQuality">Beam Quality:</label>
+              <input type="text" id="beamQuality" name="beamQuality" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="beamWidthMeter">Beam Width Meter:</label>
+              <input type="number" id="beamWidthMeter" name="beamWidthMeter" ngModel required />
+            </div>
+  
+            <!-- Submit and Reset buttons -->
+            <div class="button-row">
+              <button type="submit" [disabled]="!newBeamEntryForm.valid">Submit</button>
+              <button type="reset">Cancel</button>
+            </div>
+          </form>
+        </div>
+  
+        <div *ngIf="activeTab === 'beamDetailsForm'">
+          <!-- Beam Details Form -->
+          <form #beamDetailsForm="ngForm" (ngSubmit)="onSubmit(beamDetailsForm)" (reset)="onReset(beamDetailsForm)" class="form">
+            <div class="form-group">
+              <label for="beamStockNumber">Beam Stock Number:</label>
+              <input type="text" id="beamStockNumber" name="beamStockNumber" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="clientID">Client ID:</label>
+              <input type="text" id="clientID" name="clientID" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="beamStockEntryDate">Beam Stock Entry Date:</label>
+              <input type="date" id="beamStockEntryDate" name="beamStockEntryDate" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="totalBeamInStock">Total Beam in Stock:</label>
+              <input type="number" id="totalBeamInStock" name="totalBeamInStock" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="beamQuality">Beam Quality:</label>
+              <input type="text" id="beamQuality" name="beamQuality" ngModel required />
+            </div>
+  
+            <div class="form-group">
+              <label for="totalBeamWidthMeter">Total Beam Width Meter:</label>
+              <input type="number" id="totalBeamWidthMeter" name="totalBeamWidthMeter" ngModel required />
+            </div>
+  
+            <!-- Submit and Reset buttons -->
+            <div class="button-row">
+              <button type="submit" [disabled]="!beamDetailsForm.valid">Submit</button>
+              <button type="reset">Cancel</button>
+            </div>
+          </form>
+        </div>
+      </div>
+  
+      <!-- Use Beam section -->
+      <div *ngIf="currentSection === 'useBeam'">
+        <h3>Update Beam Usage</h3>
+        <form #updateBeamUsageForm="ngForm" (ngSubmit)="onSubmit(updateBeamUsageForm)" (reset)="onReset(updateBeamUsageForm)" class="form">
+          <div class="form-group">
+            <label for="selectStockNumber">Select Stock Number:</label>
+            <select id="selectStockNumber" name="selectStockNumber" ngModel required>
+              <option value="">Select Stock Number</option>
+              <!-- Populate options dynamically -->
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="selectFactory">Select Factory:</label>
+            <select id="selectFactory" name="selectFactory" ngModel required>
+              <option value="">Select Factory</option>
+              <!-- Populate options dynamically -->
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="selectFloor">Select Floor:</label>
+            <select id="selectFloor" name="selectFloor" ngModel required>
+              <option value="">Select Floor</option>
+              <!-- Populate options dynamically -->
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="selectBeamNumber">Select Beam Number:</label>
+            <select id="selectBeamNumber" name="selectBeamNumber" ngModel required>
+              <option value="">Select Beam Number</option>
+              <!-- Populate options dynamically -->
+            </select>
+          </div>
+  
+          <div class="form-group">
+            <label for="machineID">Machine ID:</label>
+            <input type="text" id="machineID" name="machineID" ngModel required />
+          </div>
+  
+          <div class="form-group">
+            <label for="addNewMachine">Add New Machine:</label>
+            <input type="text" id="addNewMachine" name="addNewMachine" ngModel />
+          </div>
+  
+          <div class="form-group">
+            <label for="beamUseStartDate">Beam Use Start Date:</label>
+            <input type="date" id="beamUseStartDate" name="beamUseStartDate" ngModel required />
+          </div>
+  
+          <!-- Submit and Reset buttons -->
+          <div class="button-row">
+            <button type="submit" [disabled]="!updateBeamUsageForm.valid">Submit</button>
+            <button type="reset">Cancel</button>
+          </div>
+        </form>
+      </div>
+  
+      <div *ngIf="currentSection === 'beamStockReport'" class="filters-container">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="dateRange" class="filter-label">Custom Date Range:</label>
+            <input type="date" id="dateRange" class="form-control filter-input" placeholder="Select Date Range" [(ngModel)]="filters.dateRange">
+          </div>
+          <div class="col-md-4">
+            <label for="beamQuality" class="filter-label">Beam Quality:</label>
+            <select id="beamQuality" class="form-select filter-input" [(ngModel)]="filters.beamQuality">
+              <option value="">Select Beam Quality</option>
+              <option value="Good">Good</option>
+              <option value="Average">Average</option>
+              <option value="Poor">Poor</option>
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="beamNumberRange" class="filter-label">Beam Number Range:</label>
+            <input type="text" id="beamNumberRange" class="form-control filter-input" placeholder="Enter Beam Number Range" [(ngModel)]="filters.beamNumberRange">
+            
+          </div>
+        </div>
+      </div>
+      
+      <!-- Report Table Section -->
+      <div *ngIf="currentSection === 'beamStockReport'" class="report-table">
+        <table class="table table-bordered table-hover">
+          <thead class="table-light">
+            <tr>
+              <th>Stock Number</th>
+              <th>Date of Entry</th>
+              <th>Beam Quality</th>
+              <th>Total Beams in Stock</th>
+              <th>Beam Number Range</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Loop through filtered data and display rows -->
+            <tr *ngFor="let item of filterData()">
+              <td>{{ item.stockNumber }}</td>
+              <td>{{ item.entryDate }}</td>
+              <td>{{ item.beamQuality }}</td>
+              <td>{{ item.totalBeams }}</td>
+              <td>{{ item.beamNumberRange }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Beam Use Report section -->
+      <div *ngIf="currentSection === 'beamUseReport'" class="filters-container">
+        <div class="row mb-3">
+          <div class="col-md-4">
+            <label for="factory" class="filter-label">Factory:</label>
+            <select id="factory" class="form-select" [(ngModel)]="beamuseDatafilters.factory">
+              <option value="">All Factories</option>
+              <option value="Factory 1">Factory 1</option>
+              <option value="Factory 2">Factory 2</option>
+              <!-- Add more factory options as needed -->
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="floor" class="filter-label">Floor:</label>
+            <select id="floor" class="form-select" [(ngModel)]="beamuseDatafilters.floor">
+              <option value="">All Floors</option>
+              <option value="Floor 1">Floor 1</option>
+              <option value="Floor 2">Floor 2</option>
+              <!-- Add more floor options as needed -->
+            </select>
+          </div>
+          <div class="col-md-4">
+            <label for="machineID" class="filter-label">Machine ID:</label>
+            <select id="machineID" class="form-select" [(ngModel)]="beamuseDatafilters.machineID">
+              <option value="">All Machines</option>
+              <option value="M001">M001</option>
+              <option value="M002">M002</option>
+              <!-- Add more machine ID options as needed -->
+            </select>
+          </div>
+        </div>
+      </div>
+    
+      <!-- Beam Usage Report Section -->
+      <div *ngIf="currentSection === 'beamUseReport'">
+        <div class="report-table">
+          <table class="table table-bordered table-hover">
+            <thead class="table-light">
+              <tr>
+                <th>Factory</th>
+                <th>Floor</th>
+                <th>Machine ID</th>
+                <th>Beam Stock Number</th>
+                <th>Number of Beams Used</th>
+                <th>Beam Numbers Used</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of filterBeamUsageData()">
+                <td>{{ item.factory }}</td>
+                <td>{{ item.floor }}</td>
+                <td>{{ item.machineID }}</td>
+                <td>{{ item.stockNumber }}</td>
+                <td>{{ item.beamsUsed }}</td>
+                <td>{{ item.beamNumbersUsed }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+  
+      <!-- All Stock Summary section -->
+      <div *ngIf="currentSection === 'allStockSummary'">
+        <div class="card-container">
+          <!-- In Stock card -->
+          <div class="card">
+            <h3>In Stock</h3>
+            <p>{{ inStock }}</p>
+          </div>
+  
+          <!-- In Use card -->
+          <div class="card">
+            <h3>In Use</h3>
+            <p>{{ inUse }}</p>
+          </div>
+  
+          <!-- % Beam Used card -->
+          <div class="card">
+            <h3>% Beam Used</h3>
+            <p>{{ beamUsedPercentage }}%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  

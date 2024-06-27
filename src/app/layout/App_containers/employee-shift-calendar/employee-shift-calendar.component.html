@@ -1,0 +1,34 @@
+<!-- calendar.component.html -->
+
+<div class="container">
+    <div class="calendar-container">
+      <h1>Employee Shift Calendar</h1>
+      <div class="calendar-header">
+        <h2>{{ 'Week of ' + currentWeekStart.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' - ' + currentWeekEnd.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) }}</h2>
+        <input class="filter-input" type="date" [(ngModel)]="currentDate" (change)="goToSelectedWeek()">
+        <button id="prev-week" class="btn btn-primary" (click)="prevWeek()">&lt; Previous Week</button>
+        <button id="next-week" class="btn btn-primary" (click)="nextWeek()">Next Week &gt;</button>
+      </div>
+      <div class="calendar-week">
+        <div class="calendar-day" *ngFor="let day of calendarWeek">
+          <div class="day-name">{{ day.dayName }}</div>
+          <div class="day-number">{{ day.dayNumber }}</div>
+          <div *ngFor="let shift of day.shifts" class="shift" [ngClass]="shift.type">
+            {{ shift.employee }}
+          </div>
+        </div>
+      </div>
+      <div class="box">
+        <div class="square yellow">
+          <p>Shift: Day</p>
+        </div>
+        <div class="square blue">
+          <p>Shift: Night</p>
+        </div>
+        <div class="square pink">
+          <p>No Shift</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  

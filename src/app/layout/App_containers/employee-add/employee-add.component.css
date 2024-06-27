@@ -1,0 +1,13 @@
+
+h1, h2, h3 {
+    text-align: center;
+    color: #333;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.checkbox-group label {
+    margin-right: 10px;
+}

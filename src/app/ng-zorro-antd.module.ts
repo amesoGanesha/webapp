@@ -69,6 +69,7 @@ import { NzTypographyModule } from 'ng-zorro-antd/typography';
 import { NzUploadModule } from 'ng-zorro-antd/upload';
 import { NzResizableModule } from 'ng-zorro-antd/resizable';
 import { NzPipesModule } from 'ng-zorro-antd/pipes';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   exports: [
@@ -140,11 +141,12 @@ import { NzPipesModule } from 'ng-zorro-antd/pipes';
     NzWaveModule,
     NzResizableModule,
     NzPipesModule,
+    ReactiveFormsModule 
   ]
 })
 export class DemoNgZorroAntdModule {
   static forRoot(): any[] | import("@angular/core").Type<any> | import("@angular/core").ModuleWithProviders<{}> {
     throw new Error('Method not implemented.');
   }
-
+     
 }

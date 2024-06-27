@@ -1,0 +1,37 @@
+<div class="container">
+    <h1>Shift Management</h1>
+    <div class="shift-timings">
+        <h2>Set Shift Timings</h2>
+        <form id="shift-form">
+            <div class="form-group">
+                <label for="customer">Customer Name:</label>
+                <input type="text" id="customer" name="customer" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="factory">Factory:</label>
+                <select id="factory" name="factory" class="form-control" required>
+                    <option value="">Select Factory</option>
+                    <option value="Factory 1">Factory 1</option>
+                    <option value="Factory 2">Factory 2</option>
+                    <option value="Factory 3">Factory 3</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="day-shift-start">Day Shift Start:</label>
+                <input type="time" id="day-shift-start" name="day-shift-start" class="form-control" required>
+            </div>
+
+            <div class="form-group">
+                <label for="night-shift-start">Night Shift Start:</label>
+                <input type="time" id="night-shift-start" name="night-shift-start" class="form-control" required>
+            </div>
+
+            <div class="text-center">
+                <button type="submit" class="btn btn-success">Save Shift Timings</button>
+                <button type="button" class="btn btn-secondary cancel-btn" (click)="cancel()">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>

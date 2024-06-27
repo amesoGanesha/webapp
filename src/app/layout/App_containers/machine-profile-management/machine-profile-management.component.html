@@ -1,0 +1,54 @@
+<div class="container">
+    <h1 class="text-center">Machine Profile List</h1>
+
+    <!-- Machine Profile Form -->
+    <div class="form-container">
+        <form id="machineProfileForm">
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="profileID" class="form-label">ProfileID:</label>
+                    <input type="text" id="profileID" class="form-control" placeholder="Enter ProfileID" [(ngModel)]="profileID">
+                </div>
+                <div class="col-md-6">
+                    <label for="machineType" class="form-label">Machine Type:</label>
+                    <select id="machineType" class="form-select" [(ngModel)]="machineType">
+                        <option value="">Select Machine Type</option>
+                        <option value="AirJet">AirJet</option>
+                        <option value="WaterJet">WaterJet</option>
+                        <option value="Power Loom">Power Loom</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="machineMake" class="form-label">Machine Make/Company Name:</label>
+                    <input type="text" id="machineMake" class="form-control" placeholder="Enter Machine Make/Company Name" [(ngModel)]="machineMake">
+                </div>
+                <div class="col-md-6">
+                    <label for="modelNumber" class="form-label">Model Number:</label>
+                    <input type="text" id="modelNumber" class="form-control" placeholder="Enter Model Number" [(ngModel)]="modelNumber">
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <label for="digitalMachine" class="form-label">Digital Machine:</label>
+                    <select id="digitalMachine" class="form-select" [(ngModel)]="digitalMachine">
+                        <option value="">Select</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                    </select>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <!-- Submit Button -->
+                    <button type="button" class="btn btn-primary" (click)="addMachineProfile()">Add Profile</button>
+                </div>
+                <div class="col-md-6">
+                    <!-- Clear Form Button -->
+                    <button type="button" class="btn btn-danger" (click)="clearForm()">Clear</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

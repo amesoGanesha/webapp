@@ -1,0 +1,66 @@
+<!-- feature-list.component.html -->
+
+<div class="container">
+    <h2 class="text-center mb-4">Feature Management</h2>
+    <div class="d-flex justify-content-between mb-3">
+        <button type="button" class="btn btn-success" (click)="navigateToAddFeature()">Add Feature</button>
+    </div>
+    <div class="table-responsive">
+        <table class="table table-striped">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Customer Name</th>
+                    <th scope="col">Customer ID</th>
+                    <th scope="col">Beam Stock Management</th>
+                    <th scope="col">Yarn Stock Management</th>
+                    <th scope="col">Factory Management</th>
+                    <th scope="col">Shift Management</th>
+                    <th scope="col">Machine Management</th>
+                    <th scope="col">Defective Meter Entry</th>
+                    <th scope="col">Machine Profiles</th>
+                    <th scope="col">Cloth Quality Management</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <ng-container *ngFor="let feature of features; let i = index">
+                    <tr *ngIf="editingFeature && editingFeature.id === feature.id">
+                        <td>{{ i + 1 }}</td>
+                        <td><input type="text" [(ngModel)]="editingFeature.customerName"></td>
+                        <td><input type="text" [(ngModel)]="editingFeature.customerId"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.beamStockManagement"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.yarnStockManagement"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.factoryManagement"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.shiftManagement"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.machineManagement"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.defectiveMeterEntry"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.machineProfiles"></td>
+                        <td><input type="checkbox" [(ngModel)]="editingFeature.clothQualityManagement"></td>
+                        <td>
+                            <button type="button" class="btn btn-primary mr-2" (click)="saveFeature()">Save</button>
+                            <button type="button" class="btn btn-secondary" (click)="cancelEdit()">Cancel</button>
+                        </td>
+                    </tr>
+                    <tr *ngIf="!editingFeature || editingFeature.id !== feature.id">
+                        <td>{{ i + 1 }}</td>
+                        <td>{{ feature.customerName }}</td>
+                        <td>{{ feature.customerId }}</td>
+                        <td><input type="checkbox" [checked]="feature.beamStockManagement" disabled></td>
+                        <td><input type="checkbox" [checked]="feature.yarnStockManagement" disabled></td>
+                        <td><input type="checkbox" [checked]="feature.factoryManagement" disabled></td>
+                        <td><input type="checkbox" [checked]="feature.shiftManagement" disabled></td>
+                        <td><input type="checkbox" [checked]="feature.machineManagement" disabled></td>
+                        <td><input type="checkbox" [checked]="feature.defectiveMeterEntry" disabled></td>
+                        <td><input type="checkbox" [checked]="feature.machineProfiles" disabled></td>
+                        <td><input type="checkbox" [checked]="feature.clothQualityManagement" disabled></td>
+                        <td>
+                            <button type="button" class="btn btn-primary mr-2" (click)="editFeature(feature)">Edit</button>
+                            <button type="button" class="btn btn-danger" (click)="inactiveFeature(i)">Inactive</button>
+                        </td>
+                    </tr>
+                </ng-container>
+            </tbody>
+        </table>
+    </div>
+</div>

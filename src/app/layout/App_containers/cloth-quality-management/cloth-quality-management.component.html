@@ -1,0 +1,147 @@
+<div class="d-flex justify-content-center align-items-center vh-100">
+    <div class="container">
+      <!-- Navigation Buttons -->
+      <div class="btn-group mb-4 w-100" role="group">
+        <button class="btn" [class.btn-success]="currentSection === 'clothQualityAdd'" [class.btn-primary]="currentSection !== 'clothQualityAdd'" (click)="setSection('clothQualityAdd')">Cloth Quality Add</button>
+        <button class="btn" [class.btn-success]="currentSection === 'clothQualityReport'" [class.btn-primary]="currentSection !== 'clothQualityReport'" (click)="setSection('clothQualityReport')">Cloth Quality Report</button>
+        <button class="btn" [class.btn-success]="currentSection === 'changeMachineQuality'" [class.btn-primary]="currentSection !== 'changeMachineQuality'" (click)="setSection('changeMachineQuality')">Change Machine Quality</button>
+        <button class="btn" [class.btn-success]="currentSection === 'qualityChangeReport'" [class.btn-primary]="currentSection !== 'qualityChangeReport'" (click)="setSection('qualityChangeReport')">Quality Change Report</button>
+      </div>
+  
+      <!-- Card content -->
+      <div class="card w-100">
+        <!-- Cloth Quality Add Section -->
+        <div *ngIf="currentSection === 'clothQualityAdd'" class="card-body">
+          <h2 class="card-title">Cloth Quality Add</h2>
+          <form [formGroup]="clothQualityForm" (ngSubmit)="onSubmit()">
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="clientId" class="form-label">Client ID:</label>
+                <input id="clientId" formControlName="clientId" type="text" class="form-control">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="qualityName" class="form-label">Quality Name:</label>
+                <input id="qualityName" formControlName="qualityName" type="text" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="machineProfile" class="form-label">Machine Profile:</label>
+                <input id="machineProfile" formControlName="machineProfile" type="text" class="form-control">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="qualitySpeed" class="form-label">Quality Speed (RPM):</label>
+                <input id="qualitySpeed" formControlName="qualitySpeed" type="number" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="meterProducedPerHour" class="form-label">Meter Produced Per Hour:</label>
+                <input id="meterProducedPerHour" formControlName="meterProducedPerHour" type="number" class="form-control">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="qualityWeight" class="form-label">Quality Weight (kg per 100 meters):</label>
+                <input id="qualityWeight" formControlName="qualityWeight" type="number" class="form-control">
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label for="beamUsePerMeter" class="form-label">Beam Use Per Meter:</label>
+                <input id="beamUsePerMeter" formControlName="beamUsePerMeter" type="number" class="form-control">
+              </div>
+              <div class="col-md-6 mb-3">
+                <label for="yarnUsePerMeter" class="form-label">Yarn Use Per Meter:</label>
+                <input id="yarnUsePerMeter" formControlName="yarnUsePerMeter" type="number" class="form-control">
+              </div>
+            </div>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Cancel</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
+  
+        <!-- Cloth Quality Report Section -->
+        <div *ngIf="currentSection === 'clothQualityReport'" class="card-body">
+          <h2 class="card-title">Cloth Quality Report</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Client ID</th>
+                <th>Quality Name</th>
+                <th>Machine Profile</th>
+                <th>Quality Speed (RPM)</th>
+                <th>Meter Produced Per Hour</th>
+                <th>Quality Weight (kg per 100 meters)</th>
+                <th>Beam Use Per Meter</th>
+                <th>Yarn Use Per Meter</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of sampleData">
+                <td>{{ data.clientId }}</td>
+                <td>{{ data.qualityName }}</td>
+                <td>{{ data.machineProfile }}</td>
+                <td>{{ data.qualitySpeed }}</td>
+                <td>{{ data.meterProducedPerHour }}</td>
+                <td>{{ data.qualityWeight }}</td>
+                <td>{{ data.beamUsePerMeter }}</td>
+                <td>{{ data.yarnUsePerMeter }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+  
+        <!-- Change Machine Quality Section -->
+        <div *ngIf="currentSection === 'changeMachineQuality'" class="card-body">
+          <h2 class="card-title">Change Machine Quality</h2>
+          <form [formGroup]="changeMachineQualityForm" (ngSubmit)="onSubmit()">
+            <div class="mb-3">
+              <label for="clientIdChange" class="form-label">Client ID:</label>
+              <input id="clientIdChange" formControlName="clientId" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+              <label for="selectMachineName" class="form-label">Select Machine Name:</label>
+              <select id="selectMachineName" formControlName="selectMachineName" class="form-select">
+                <option *ngFor="let machine of machineNames" [value]="machine">{{ machine }}</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="setClothQuality" class="form-label">Set Cloth Quality:</label>
+              <input id="setClothQuality" formControlName="setClothQuality" type="text" class="form-control">
+            </div>
+            <div class="mb-3">
+                <label for="setClothQuality" class="form-label">Start Time:</label>
+                <input id="setClothQuality" formControlName="setClothQuality" type="datetime-local" class="form-control">
+              </div>
+            <div class="d-flex justify-content-end mt-4">
+              <button type="button" class="btn btn-secondary me-2" (click)="onCancel()">Cancel</button>
+              <button type="submit" class="btn btn-success">Submit</button>
+            </div>
+          </form>
+        </div>
+  
+        <!-- Quality Change Report Section -->
+        <div *ngIf="currentSection === 'qualityChangeReport'" class="card-body">
+          <h2 class="card-title">Quality Change Report</h2>
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>Client ID</th>
+                <th>Select Machine Name</th>
+                <th>Set Cloth Quality</th>
+                <th>Start Time</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let item of qualityChangeData">
+                <td>{{ item.clientId }}</td>
+                <td>{{ item.selectMachineName }}</td>
+                <td>{{ item.setClothQuality }}</td>
+                <td>{{ item.startTime | date: 'medium' }}</td>
+              </tr>
+            </tbody>
+          </table>           
+        </div>
+      </div>
+      

@@ -1,0 +1,27 @@
+<!-- all-employee.component.html -->
+
+<div class="container">
+    <h1>All Employees</h1>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Phone Number</th>
+                <th>Address</th>
+                <th>Shift</th>
+                <th>Machines Management</th>
+                <th>Total Machines</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let employee of employees">
+                <td>{{ employee.name }}</td>
+                <td>{{ employee.phoneNumber }}</td>
+                <td>{{ employee.address }}</td>
+                <td>{{ employee.shift }}</td>
+                <td>{{ employee.machinesManagement.join(', ') }}</td>
+                <td>{{ employee.totalMachines }}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>

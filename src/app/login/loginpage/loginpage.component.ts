@@ -31,8 +31,8 @@ export class LoginpageComponent {
     if (this.authService.authenticate(login, password)) {
       this.message.success('Login successful!');
       setTimeout(() => {
-        this.router.navigate(['/App/report']);  // Navigate to the dashboard or another page
-      }, 2000);  // Wait for 2 seconds
+        // Navigate to the dashboard or another page
+      }, 0);  // Wait for 2 seconds
     } else {
       this.message.error('Authentication failed. Please check your credentials.');
     }

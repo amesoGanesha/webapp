@@ -1,0 +1,80 @@
+<!-- employee-shift-management.component.html -->
+
+<div class="container">
+    <h1>Employee Shift Management</h1>
+    <form (ngSubmit)="submitForm()">
+        <div class="form-group">
+            <label for="employee-name">Emp Name:</label>
+            <select id="employee-name" name="employee-name" required class="form-control" [(ngModel)]="employee.name">
+                <option value="Ganesh">Ganesh</option>
+                <option value="Karthi">Karthi</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="employee-id">Emp ID:</label>
+            <select id="employee-id" name="employee-id" required class="form-control" [(ngModel)]="employee.id">
+                <option value="1235">1235</option>
+                <option value="7654">7654</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="employee-shift">Shift:</label>
+            <select id="employee-shift" name="employee-shift" required class="form-control" [(ngModel)]="employee.shift">
+                <option value="day">Day Shift</option>
+                <option value="night">Night Shift</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="selectFactory">Select Factory:</label>
+            <select id="selectFactory" name="selectFactory" required class="form-control" [(ngModel)]="employee.factory">
+                <option selected disabled>Select Factory...</option>
+                <option value="factory1">Factory 1</option>
+                <option value="factory2">Factory 2</option>
+                <option value="factory3">Factory 3</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="selectFloor">Select Floor:</label>
+            <select id="selectFloor" name="selectFloor" required class="form-control" [(ngModel)]="employee.floor">
+                <option selected disabled>Select Floor...</option>
+                <option value="floor1">Floor 1</option>
+                <option value="floor2">Floor 2</option>
+                <option value="floor3">Floor 3</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="machines-managed">Machines Responsible:</label>
+            <div>
+                <label><input type="checkbox" name="machines-managed" value="spinning" [(ngModel)]="employee.machines.spinning"> Spinning machinery </label>
+                <label><input type="checkbox" name="machines-managed" value="carding" [(ngModel)]="employee.machines.carding"> Carding</label>
+                <label><input type="checkbox" name="machines-managed" value="cutting" [(ngModel)]="employee.machines.cutting"> Cutting machinery</label>
+                <label><input type="checkbox" name="machines-managed" value="molding" [(ngModel)]="employee.machines.molding"> Molding</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="employee-gender">Gender:</label>
+            <select id="employee-gender" name="employee-gender" required class="form-control" [(ngModel)]="employee.gender">
+                <option value="male">Male</option>
+                <option value="female">Female</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="start-date">Start Date:</label>
+            <input type="date" id="start-date" name="start-date" required class="form-control" [(ngModel)]="employee.startDate">
+        </div>
+
+        <div class="form-group">
+            <label for="end-date">End Date:</label>
+            <input type="date" id="end-date" name="end-date" required class="form-control" [(ngModel)]="employee.endDate">
+        </div>
+
+        <button type="submit" class="btn btn-success">Add Employee</button>
+    </form>
+</div>

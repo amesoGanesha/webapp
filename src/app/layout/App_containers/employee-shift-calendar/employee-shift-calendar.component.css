@@ -1,0 +1,159 @@
+/* calendar.component.css */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-color: #eef2f3;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+}
+
+.calendar-container {
+    width: 100%;
+    max-width: 800px;
+    background: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.calendar-header h2 {
+    margin: 0;
+    color: #333;
+}
+
+.calendar-header button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.calendar-header button:hover {
+    background-color: #0056b3;
+}
+
+.calendar-header input[type="date"] {
+    padding: 8px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    margin-right: 10px;
+}
+
+.calendar-week {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px;
+    margin-top: 10px;
+}
+
+.calendar-day {
+    background-color: #f9f9f9;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+}
+
+.day-number {
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.day-name {
+    font-size: 14px;
+    color: #666;
+    margin-bottom: 10px;
+}
+
+.shift {
+    margin-top: 5px;
+    padding: 5px 10px;
+    border-radius: 5px;
+    white-space: nowrap;
+}
+
+.shift.day {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.shift.night {
+    background-color: #ffc107;
+    color: #333;
+}
+
+.shift.no-shift {
+    background-color: #ff69b4;
+    color: #fff;
+}
+
+.square {
+    display: flex;
+    justify-content: flex-start;
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.yellow {
+    background-color: #ffc107;
+    padding: 10px;
+    width: 90px;
+    border-radius: 5px;
+}
+
+.blue {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    width: 90px;
+    border-radius: 5px;
+}
+
+.pink {
+    background-color: #ff69b4;
+    padding: 10px;
+    width: 90px;
+    border-radius: 5px;
+}
+
+/* Additional styles for text and alignment */
+.square p {
+    margin: 0;
+    font-weight: bold;
+}
+
+.box {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+@media screen and (max-width: 600px) {
+    .calendar-week {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .calendar-week {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

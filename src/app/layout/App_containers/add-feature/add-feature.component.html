@@ -1,0 +1,65 @@
+<!-- add-feature.component.html -->
+<div class="container">
+    <h1 class="text-center mt-4 mb-4">Feature Entitlement Form</h1>
+    <form (ngSubmit)="onSubmit()" #entitlementForm="ngForm">
+        <div class="form-group">
+            <label for="customerId">Customer ID:</label>
+            <select id="customerId" name="customerId" class="form-control" required [(ngModel)]="feature.customerId" #customerId="ngModel">
+                <option value="">Select Customer ID</option>
+                <option value="customer1">Customer 1</option>
+                <option value="customer2">Customer 2</option>
+                <option value="customer3">Customer 3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="customerName">Customer Name:</label>
+            <select id="customerName" name="customerName" class="form-control" required [(ngModel)]="feature.customerName" #customerName="ngModel">
+                <option value="">Select Customer Name</option>
+                <option value="customer1">Customer 1</option>
+                <option value="customer2">Customer 2</option>
+                <option value="customer3">Customer 3</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="machinesAllowed">Machines Allowed:</label>
+            <input type="number" id="machinesAllowed" name="machinesAllowed" class="form-control" required [(ngModel)]="feature.machinesAllowed" #machinesAllowed="ngModel">
+        </div>
+        <div class="form-group">
+            <label>Features Access:</label>
+            <div class="form-check">
+                <input type="checkbox" id="beamStock" name="features" class="form-check-input" value="beamStock" [(ngModel)]="feature.beamStockManagement">
+                <label for="beamStock" class="form-check-label">Beam Stock Management</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="yarnStock" name="features" class="form-check-input" value="yarnStock" [(ngModel)]="feature.yarnStockManagement">
+                <label for="yarnStock" class="form-check-label">Yarn Stock Management</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="factoryManagement" name="features" class="form-check-input" value="factoryManagement" [(ngModel)]="feature.factoryManagement">
+                <label for="factoryManagement" class="form-check-label">Factory Management</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="shiftManagement" name="features" class="form-check-input" value="shiftManagement" [(ngModel)]="feature.shiftManagement">
+                <label for="shiftManagement" class="form-check-label">Shift Management</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="machineManagement" name="features" class="form-check-input" value="machineManagement" [(ngModel)]="feature.machineManagement">
+                <label for="machineManagement" class="form-check-label">Machine Management</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="defectiveMeter" name="features" class="form-check-input" value="defectiveMeter" [(ngModel)]="feature.defectiveMeterEntry">
+                <label for="defectiveMeter" class="form-check-label">Defective Meter Entry</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="machineProfiles" name="features" class="form-check-input" value="machineProfiles" [(ngModel)]="feature.machineProfiles">
+                <label for="machineProfiles" class="form-check-label">Machine Profiles</label>
+            </div>
+            <div class="form-check">
+                <input type="checkbox" id="clothQuality" name="features" class="form-check-input" value="clothQuality" [(ngModel)]="feature.clothQualityManagement">
+                <label for="clothQuality" class="form-check-label">Cloth Quality Management</label>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <div id="log" class="mt-4"></div>
+</div>
